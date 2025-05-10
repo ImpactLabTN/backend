@@ -140,14 +140,14 @@ export default function RoomsPage() {
                   {/* Room Card 1 */}
                   <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
                     <div className="relative h-48">
-                      <Image
-                        src="/placeholder.svg?height=200&width=300"
-                        alt="Executive Office"
+                     <Image
+                        src="/Assets/OpenSpace.jpg"
+                        alt="OpenSpace"
                         fill
                         className="object-cover"
                       />
                       <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                        Private Office
+                      OpenSpace
                       </div>
                     </div>
                     <div className="p-4">
@@ -168,7 +168,7 @@ export default function RoomsPage() {
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">$35 / hour</div>
+                        <div className="text-primary font-semibold">20DT/ hour</div>
                         <Button asChild size="sm">
                           <Link href="/rooms/1/reserve">Book Now</Link>
                         </Button>
@@ -179,9 +179,9 @@ export default function RoomsPage() {
                   {/* Room Card 2 */}
                   <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
                     <div className="relative h-48">
-                      <Image
-                        src="/placeholder.svg?height=200&width=300"
-                        alt="Conference Room"
+                     <Image
+                        src="/Assets/conference-room.jpg"
+                        alt="Meeting Room"
                         fill
                         className="object-cover"
                       />
@@ -207,7 +207,7 @@ export default function RoomsPage() {
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">$75 / hour</div>
+                        <div className="text-primary font-semibold">35DT / hour</div>
                         <Button asChild size="sm">
                           <Link href="/rooms/2/reserve">Book Now</Link>
                         </Button>
@@ -219,17 +219,17 @@ export default function RoomsPage() {
                   <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
                     <div className="relative h-48">
                       <Image
-                        src="/placeholder.svg?height=200&width=300"
+                        src="/Assets/Event Space.jpg"
                         alt="Event Space"
                         fill
                         className="object-cover"
                       />
                       <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                        Event Space
+                      Event Space
                       </div>
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-1">Workshop Area</h3>
+                      <h3 className="font-semibold text-lg mb-1">Event Space</h3>
                       <div className="flex items-center text-sm text-neutral-grey mb-3">
                         <Users className="h-4 w-4 mr-1" />
                         <span>Up to 30 people</span>
@@ -246,7 +246,7 @@ export default function RoomsPage() {
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">$150 / hour</div>
+                        <div className="text-primary font-semibold">50DT / hour</div>
                         <Button asChild size="sm">
                           <Link href="/rooms/3/reserve">Book Now</Link>
                         </Button>
@@ -257,9 +257,14 @@ export default function RoomsPage() {
                   {/* Room Card 4 */}
                   <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
                     <div className="relative h-48">
-                      <Image src="/placeholder.svg?height=200&width=300" alt="Hot Desk" fill className="object-cover" />
+                     <Image
+                        src="/Assets/flex-desk.png"
+                        alt="Flex Desk"
+                        fill
+                        className="object-cover"
+                      />
                       <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                        Hot Desk
+                      Flex Desk
                       </div>
                     </div>
                     <div className="p-4">
@@ -280,7 +285,7 @@ export default function RoomsPage() {
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">$15 / hour</div>
+                        <div className="text-primary font-semibold">5DT / hour</div>
                         <Button asChild size="sm">
                           <Link href="/rooms/4/reserve">Book Now</Link>
                         </Button>
@@ -292,13 +297,13 @@ export default function RoomsPage() {
                   <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
                     <div className="relative h-48">
                       <Image
-                        src="/placeholder.svg?height=200&width=300"
+                        src="/Assets/team-office.jpg"
                         alt="Team Office"
                         fill
                         className="object-cover"
                       />
                       <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                        Private Office
+                      team-office
                       </div>
                     </div>
                     <div className="p-4">
@@ -319,7 +324,7 @@ export default function RoomsPage() {
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">$60 / hour</div>
+                        <div className="text-primary font-semibold">10TD / hour</div>
                         <Button asChild size="sm">
                           <Link href="/rooms/5/reserve">Book Now</Link>
                         </Button>
@@ -330,14 +335,14 @@ export default function RoomsPage() {
                   {/* Room Card 6 */}
                   <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
                     <div className="relative h-48">
-                      <Image
-                        src="/placeholder.svg?height=200&width=300"
-                        alt="Meeting Pod"
+                       <Image
+                        src="/Assets/meeting-prod.jpg"
+                        alt="Meeting Prod"
                         fill
                         className="object-cover"
                       />
                       <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                        Meeting Room
+                      meeting-prod
                       </div>
                     </div>
                     <div className="p-4">
@@ -358,7 +363,7 @@ export default function RoomsPage() {
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">$40 / hour</div>
+                        <div className="text-primary font-semibold">40DT / hour</div>
                         <Button asChild size="sm">
                           <Link href="/rooms/6/reserve">Book Now</Link>
                         </Button>

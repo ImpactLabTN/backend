@@ -31,7 +31,7 @@ export default function Home() {
             </div>
             <div className="hidden md:block relative h-[400px]">
               <Image
-                src="/placeholder.svg?height=400&width=600"
+                src="/Assets/Accuiel.png"
                 alt="Modern coworking space"
                 fill
                 className="object-cover rounded-lg"
@@ -96,14 +96,14 @@ export default function Home() {
               <div className="rounded-lg overflow-hidden shadow-sm border">
                 <div className="relative h-48">
                   <Image
-                    src="/placeholder.svg?height=200&width=400"
-                    alt="Private Office"
+                    src="/Assets/OpenSpace.jpg"
+                    alt="OpenSpace"
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">Private Offices</h3>
+                  <h3 className="text-xl font-semibold mb-2">OpenSpace</h3>
                   <p className="text-neutral-grey mb-4">Dedicated spaces for teams of 1-10 people with 24/7 access.</p>
                   <Button asChild variant="outline" className="w-full">
                     <Link href="/rooms">View Details</Link>
@@ -113,9 +113,9 @@ export default function Home() {
 
               <div className="rounded-lg overflow-hidden shadow-sm border">
                 <div className="relative h-48">
-                  <Image
-                    src="/placeholder.svg?height=200&width=400"
-                    alt="Meeting Rooms"
+                 <Image
+                    src="/Assets/Meeting Room.png"
+                    alt="Meeting Room"
                     fill
                     className="object-cover"
                   />
@@ -133,7 +133,7 @@ export default function Home() {
 
               <div className="rounded-lg overflow-hidden shadow-sm border">
                 <div className="relative h-48">
-                  <Image src="/placeholder.svg?height=200&width=400" alt="Event Spaces" fill className="object-cover" />
+                  <Image src="/Assets/Event Space.jpg" alt="Event Spaces" fill className="object-cover" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Event Spaces</h3>
