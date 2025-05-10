@@ -21,12 +21,12 @@ export default function LoginPage() {
     setIsLoading(true)
 
     try {
-      const formData = new FormData(e.currentTarget)
-      const result = await login(formData)
+      const formData = new FormData(e.currentTarget);
+      const result = await login(formData);
 
-      if (result?.error) {
-        setError(result.error)
-      }
+      // if (result?.error) {
+      //   setError(result.error)
+      // }
     } catch (err) {
       setError("An error occurred. Please try again.")
     } finally {

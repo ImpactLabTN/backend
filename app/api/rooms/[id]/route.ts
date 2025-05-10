@@ -2,6 +2,12 @@ import { type NextRequest, NextResponse } from "next/server"
 import { deleteRoom, getRoomById, updateRoom } from "@/lib/models/room"
 
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+  console.log(
+    '______________________________________________________________________________'
+  );
+  console.log('🚀 ~ GET ~ params:', params);
+
+  
   try {
     const roomId = params.id
     const room = await getRoomById(roomId)

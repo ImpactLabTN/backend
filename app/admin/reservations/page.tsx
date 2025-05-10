@@ -105,91 +105,108 @@ const mockReservations = [
 ]
 
 export default function ReservationsPage() {
-  const { user, isAuthenticated } = useSelector((state: RootState) => state.auth)
-  const [reservations, setReservations] = useState(mockReservations)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false)
-  const [reservationToCancel, setReservationToCancel] = useState<string | null>(null)
-  const router = useRouter()
+  const { user, isAuthenticated } = useSelector(
+    (state: RootState) => state.auth
+  );
+  const [reservations, setReservations] = useState(mockReservations);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isCancelDialogOpen, setIsCancelDialogOpen] = useState(false);
+  const [reservationToCancel, setReservationToCancel] = useState<string | null>(
+    null
+  );
+  const router = useRouter();
 
-  useEffect(() => {
-    // Redirect if not authenticated or not an admin
-    if (!isAuthenticated || user?.role !== "admin") {
-      router.push("/login")
-    }
-  }, [isAuthenticated, user, router])
+  // useEffect(() => {
+  //   // Redirect if not authenticated or not an admin
+  //   if (!isAuthenticated || user?.role !== "admin") {
+  //     router.push("/login")
+  //   }
+  // }, [isAuthenticated, user, router])
 
-  // If not authenticated or not admin, don't render the page
-  if (!isAuthenticated || user?.role !== "admin") {
-    return null
-  }
+  // // If not authenticated or not admin, don't render the page
+  // if (!isAuthenticated || user?.role !== "admin") {
+  //   return null
+  // }
 
   const filteredReservations = reservations.filter(
     (reservation) =>
       reservation.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      reservation.roomName.toLowerCase().includes(searchTerm.toLowerCase()),
-  )
+      reservation.roomName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleCancelReservation = (reservationId: string) => {
-    setReservationToCancel(reservationId)
-    setIsCancelDialogOpen(true)
-  }
+    setReservationToCancel(reservationId);
+    setIsCancelDialogOpen(true);
+  };
 
   const confirmCancelReservation = () => {
     if (reservationToCancel) {
       setReservations(
         reservations.map((reservation) =>
-          reservation.id === reservationToCancel ? { ...reservation, status: "cancelled" } : reservation,
-        ),
-      )
-      setIsCancelDialogOpen(false)
-      setReservationToCancel(null)
+          reservation.id === reservationToCancel
+            ? { ...reservation, status: 'cancelled' }
+            : reservation
+        )
+      );
+      setIsCancelDialogOpen(false);
+      setReservationToCancel(null);
     }
-  }
+  };
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className='flex min-h-screen flex-col'>
       <Navbar />
-      <main className="flex-1 py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center mb-8">
-            <Link href="/admin" className="mr-4">
-              <Button variant="ghost" size="icon">
-                <ArrowLeft className="h-5 w-5" />
+      <main className='flex-1 py-8'>
+        <div className='container mx-auto px-4'>
+          <div className='flex items-center mb-8'>
+            <Link
+              href='/admin'
+              className='mr-4'
+            >
+              <Button
+                variant='ghost'
+                size='icon'
+              >
+                <ArrowLeft className='h-5 w-5' />
               </Button>
             </Link>
             <div>
-              <h1 className="text-2xl font-bold">Reservation Management</h1>
-              <p className="text-neutral-grey">Manage room bookings and reservations</p>
+              <h1 className='text-2xl font-bold'>Reservation Management</h1>
+              <p className='text-neutral-grey'>
+                Manage room bookings and reservations
+              </p>
             </div>
           </div>
 
           {/* Actions Bar */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-            <div className="relative w-full md:w-auto">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-neutral-grey" />
+          <div className='flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4'>
+            <div className='relative w-full md:w-auto'>
+              <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-neutral-grey' />
               <Input
-                placeholder="Search reservations..."
+                placeholder='Search reservations...'
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 w-full md:w-80"
+                className='pl-10 w-full md:w-80'
               />
             </div>
 
-            <div className="flex items-center gap-2 w-full md:w-auto">
-              <Button className="w-full md:w-auto">
-                <Plus className="h-4 w-4 mr-2" />
+            <div className='flex items-center gap-2 w-full md:w-auto'>
+              <Button className='w-full md:w-auto'>
+                <Plus className='h-4 w-4 mr-2' />
                 New Reservation
               </Button>
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="w-full md:w-auto">
+                  <Button
+                    variant='outline'
+                    className='w-full md:w-auto'
+                  >
                     <span>Filter</span>
-                    <ChevronDown className="h-4 w-4 ml-2" />
+                    <ChevronDown className='h-4 w-4 ml-2' />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent align='end'>
                   <DropdownMenuLabel>Filter by</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>All Reservations</DropdownMenuItem>
@@ -206,7 +223,7 @@ export default function ReservationsPage() {
           </div>
 
           {/* Reservations Table */}
-          <div className="border rounded-lg overflow-hidden">
+          <div className='border rounded-lg overflow-hidden'>
             <Table>
               <TableHeader>
                 <TableRow>
@@ -216,64 +233,75 @@ export default function ReservationsPage() {
                   <TableHead>Time</TableHead>
                   <TableHead>Status</TableHead>
                   <TableHead>Price</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+                  <TableHead className='text-right'>Actions</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredReservations.length > 0 ? (
                   filteredReservations.map((reservation) => (
                     <TableRow key={reservation.id}>
-                      <TableCell className="font-medium">{reservation.roomName}</TableCell>
+                      <TableCell className='font-medium'>
+                        {reservation.roomName}
+                      </TableCell>
                       <TableCell>{reservation.userName}</TableCell>
-                      <TableCell>{new Date(reservation.date).toLocaleDateString()}</TableCell>
                       <TableCell>
-                        {reservation.startTime.replace(":", ":")} - {reservation.endTime.replace(":", ":")}
+                        {new Date(reservation.date).toLocaleDateString()}
+                      </TableCell>
+                      <TableCell>
+                        {reservation.startTime.replace(':', ':')} -{' '}
+                        {reservation.endTime.replace(':', ':')}
                       </TableCell>
                       <TableCell>
                         <span
                           className={`px-2 py-1 rounded-full text-xs ${
-                            reservation.status === "confirmed"
-                              ? "bg-green-100 text-green-800"
-                              : reservation.status === "pending"
-                                ? "bg-yellow-100 text-yellow-800"
-                                : "bg-red-100 text-red-800"
+                            reservation.status === 'confirmed'
+                              ? 'bg-green-100 text-green-800'
+                              : reservation.status === 'pending'
+                              ? 'bg-yellow-100 text-yellow-800'
+                              : 'bg-red-100 text-red-800'
                           }`}
                         >
-                          {reservation.status.charAt(0).toUpperCase() + reservation.status.slice(1)}
+                          {reservation.status.charAt(0).toUpperCase() +
+                            reservation.status.slice(1)}
                         </span>
                       </TableCell>
                       <TableCell>${reservation.totalPrice}</TableCell>
-                      <TableCell className="text-right">
+                      <TableCell className='text-right'>
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
-                            <Button variant="ghost" size="icon">
-                              <MoreHorizontal className="h-4 w-4" />
-                              <span className="sr-only">Actions</span>
+                            <Button
+                              variant='ghost'
+                              size='icon'
+                            >
+                              <MoreHorizontal className='h-4 w-4' />
+                              <span className='sr-only'>Actions</span>
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
+                          <DropdownMenuContent align='end'>
                             <DropdownMenuLabel>Actions</DropdownMenuLabel>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem>
-                              <Edit className="h-4 w-4 mr-2" />
+                              <Edit className='h-4 w-4 mr-2' />
                               Edit Reservation
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                              <Calendar className="h-4 w-4 mr-2" />
+                              <Calendar className='h-4 w-4 mr-2' />
                               View Details
                             </DropdownMenuItem>
-                            {reservation.status !== "cancelled" && (
+                            {reservation.status !== 'cancelled' && (
                               <DropdownMenuItem
-                                className="text-error"
-                                onClick={() => handleCancelReservation(reservation.id)}
+                                className='text-error'
+                                onClick={() =>
+                                  handleCancelReservation(reservation.id)
+                                }
                               >
-                                <X className="h-4 w-4 mr-2" />
+                                <X className='h-4 w-4 mr-2' />
                                 Cancel Reservation
                               </DropdownMenuItem>
                             )}
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem className="text-error">
-                              <Trash className="h-4 w-4 mr-2" />
+                            <DropdownMenuItem className='text-error'>
+                              <Trash className='h-4 w-4 mr-2' />
                               Delete
                             </DropdownMenuItem>
                           </DropdownMenuContent>
@@ -283,7 +311,10 @@ export default function ReservationsPage() {
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell colSpan={7} className="text-center py-8 text-neutral-grey">
+                    <TableCell
+                      colSpan={7}
+                      className='text-center py-8 text-neutral-grey'
+                    >
                       No reservations found matching your search.
                     </TableCell>
                   </TableRow>
@@ -293,20 +324,34 @@ export default function ReservationsPage() {
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-between items-center mt-4">
-            <p className="text-sm text-neutral-grey">
-              Showing <span className="font-medium">{filteredReservations.length}</span> of{" "}
-              <span className="font-medium">{reservations.length}</span> reservations
+          <div className='flex justify-between items-center mt-4'>
+            <p className='text-sm text-neutral-grey'>
+              Showing{' '}
+              <span className='font-medium'>{filteredReservations.length}</span>{' '}
+              of <span className='font-medium'>{reservations.length}</span>{' '}
+              reservations
             </p>
 
-            <div className="flex items-center gap-1">
-              <Button variant="outline" size="sm" disabled>
+            <div className='flex items-center gap-1'>
+              <Button
+                variant='outline'
+                size='sm'
+                disabled
+              >
                 Previous
               </Button>
-              <Button variant="outline" size="sm" className="bg-primary text-white">
+              <Button
+                variant='outline'
+                size='sm'
+                className='bg-primary text-white'
+              >
                 1
               </Button>
-              <Button variant="outline" size="sm" disabled>
+              <Button
+                variant='outline'
+                size='sm'
+                disabled
+              >
                 Next
               </Button>
             </div>
@@ -315,19 +360,29 @@ export default function ReservationsPage() {
       </main>
 
       {/* Cancel Confirmation Dialog */}
-      <Dialog open={isCancelDialogOpen} onOpenChange={setIsCancelDialogOpen}>
+      <Dialog
+        open={isCancelDialogOpen}
+        onOpenChange={setIsCancelDialogOpen}
+      >
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Cancel Reservation</DialogTitle>
             <DialogDescription>
-              Are you sure you want to cancel this reservation? This action cannot be undone.
+              Are you sure you want to cancel this reservation? This action
+              cannot be undone.
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsCancelDialogOpen(false)}>
+            <Button
+              variant='outline'
+              onClick={() => setIsCancelDialogOpen(false)}
+            >
               No, Keep It
             </Button>
-            <Button variant="destructive" onClick={confirmCancelReservation}>
+            <Button
+              variant='destructive'
+              onClick={confirmCancelReservation}
+            >
               Yes, Cancel It
             </Button>
           </DialogFooter>
@@ -336,5 +391,5 @@ export default function ReservationsPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

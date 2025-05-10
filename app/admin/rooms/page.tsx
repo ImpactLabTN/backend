@@ -47,14 +47,15 @@ export default function RoomsPage() {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const user = await getCurrentUser()
+      // const user = await getCurrentUser()
 
-      if (!user || user.role !== "admin") {
-        router.push("/login")
-        return
-      }
+      // if (!user || user.role !== "admin") {
+      //   router.push("/login")
+      //   return
+      // }
 
-      fetchRooms()
+
+      fetchRooms();
     }
 
     checkAuth()
