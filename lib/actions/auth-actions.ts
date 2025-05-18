@@ -129,7 +129,8 @@ export async function logout() {
 }
 
 export async function getCurrentUser() {
-  const userCookie = cookies().get('user');
+  const useCookies = await cookies();
+  const userCookie = useCookies.get('user');
   if (!userCookie) {
     return null;
   }
