@@ -84,11 +84,6 @@ export default function RegisterPage() {
           {state?.error && (
             <p className='text-sm text-red-500'>{state.error}</p>
           )}
-          {state?.error === null && (
-            <p className='text-sm text-green-500'>
-              Redirecting to your dashboard...
-            </p>
-          )}
           <button
             type='submit'
             className='w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:bg-gray-400'
