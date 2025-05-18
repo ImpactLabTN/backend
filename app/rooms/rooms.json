@@ -1,0 +1,80 @@
+[
+  {
+    "_id": "1",
+    "name": "Executive Office",
+    "description": "A private office space ideal for small teams or individual work.",
+    "type": "OpenSpace",
+    "capacity": 3,
+    "pricePerHour": 20,
+    "amenities": ["WiFi", "Printer", "Coffee"],
+    "images": ["/Assets/OpenSpace.jpg"],
+    "status": "active",
+    "createdAt": "2025-05-18T08:24:00Z",
+    "updatedAt": "2025-05-18T08:24:00Z"
+  },
+  {
+    "_id": "2",
+    "name": "Conference Room",
+    "description": "A spacious room equipped for meetings and presentations.",
+    "type": "Meeting Room",
+    "capacity": 10,
+    "pricePerHour": 35,
+    "amenities": ["WiFi", "AV Equipment", "Whiteboard"],
+    "images": ["/Assets/conference-room.jpg"],
+    "status": "active",
+    "createdAt": "2025-05-18T08:24:00Z",
+    "updatedAt": "2025-05-18T08:24:00Z"
+  },
+  {
+    "_id": "3",
+    "name": "Event Space",
+    "description": "A large venue suitable for events and gatherings.",
+    "type": "Event Space",
+    "capacity": 30,
+    "pricePerHour": 50,
+    "amenities": ["WiFi", "AV Equipment", "Catering"],
+    "images": ["/Assets/Event Space.jpg"],
+    "status": "active",
+    "createdAt": "2025-05-18T08:24:00Z",
+    "updatedAt": "2025-05-18T08:24:00Z"
+  },
+  {
+    "_id": "4",
+    "name": "Flex Desk",
+    "description": "A flexible desk space for individual productivity.",
+    "type": "Flex Desk",
+    "capacity": 1,
+    "pricePerHour": 5,
+    "amenities": ["WiFi", "Printer", "Coffee"],
+    "images": ["/Assets/flex-desk.png"],
+    "status": "active",
+    "createdAt": "2025-05-18T08:24:00Z",
+    "updatedAt": "2025-05-18T08:24:00Z"
+  },
+  {
+    "_id": "5",
+    "name": "Team Office",
+    "description": "A collaborative office space for medium-sized teams.",
+    "type": "team-office",
+    "capacity": 8,
+    "pricePerHour": 10,
+    "amenities": ["WiFi", "Printer", "Coffee"],
+    "images": ["/Assets/team-office.jpg"],
+    "status": "active",
+    "createdAt": "2025-05-18T08:24:00Z",
+    "updatedAt": "2025-05-18T08:24:00Z"
+  },
+  {
+    "_id": "6",
+    "name": "Meeting Pod",
+    "description": "A compact space for small group meetings.",
+    "type": "meeting-prod",
+    "capacity": 4,
+    "pricePerHour": 40,
+    "amenities": ["WiFi", "Whiteboard", "Coffee"],
+    "images": ["/Assets/meeting-prod.jpg"],
+    "status": "active",
+    "createdAt": "2025-05-18T08:24:00Z",
+    "updatedAt": "2025-05-18T08:24:00Z"
+  }
+]

@@ -125,7 +125,7 @@ export async function register(state: any, formData: FormData) {
 
 export async function logout() {
   cookies().delete('user');
-  redirect('/login');
+  redirect('/');
 }
 
 export async function getCurrentUser() {

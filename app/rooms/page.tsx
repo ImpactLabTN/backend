@@ -7,8 +7,29 @@ import { Slider } from "@/components/ui/slider"
 import { Calendar, Coffee, Cpu, Filter, Printer, Users, Wifi } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import roomsData from './rooms.json';
 
 export default function RoomsPage() {
+  // Helper function to format capacity for display
+  const formatCapacity = (capacity: number): string => {
+    if (capacity === 1) return '1 person';
+    if (capacity <= 3) return '1-3 people';
+    if (capacity <= 5) return '2-4 people';
+    if (capacity <= 8) return '4-8 people';
+    if (capacity <= 10) return '6-10 people';
+    return 'Up to 30 people';
+  };
+
+  // Map amenities to icons
+  const amenityIcons: { [key: string]: React.ReactNode } = {
+    WiFi: <Wifi className='h-3 w-3 mr-1' />,
+    Printer: <Printer className='h-3 w-3 mr-1' />,
+    Coffee: <Coffee className='h-3 w-3 mr-1' />,
+    'AV Equipment': <Cpu className='h-3 w-3 mr-1' />,
+    Whiteboard: <Calendar className='h-3 w-3 mr-1' />,
+    Catering: <Coffee className='h-3 w-3 mr-1' />,
+  };
+
   return (
     <div className='flex min-h-screen flex-col'>
       <Navbar />
@@ -169,7 +190,9 @@ export default function RoomsPage() {
               {/* Rooms Grid */}
               <div className='md:col-span-3'>
                 <div className='flex justify-between items-center mb-6'>
-                  <h2 className='text-xl font-semibold'>12 Spaces Available</h2>
+                  <h2 className='text-xl font-semibold'>
+                    {roomsData.length} Spaces Available
+                  </h2>
                   <Select defaultValue='recommended'>
                     <SelectTrigger className='w-[180px]'>
                       <SelectValue placeholder='Sort by' />
@@ -188,279 +211,56 @@ export default function RoomsPage() {
                 </div>
 
                 <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
-                  {/* Room Card 1 */}
-                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
-                    <div className='relative h-48'>
-                      <Image
-                        src='/Assets/OpenSpace.jpg'
-                        alt='OpenSpace'
-                        fill
-                        className='object-cover'
-                      />
-                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
-                        OpenSpace
-                      </div>
-                    </div>
-                    <div className='p-4'>
-                      <h3 className='font-semibold text-lg mb-1'>
-                        Executive Office
-                      </h3>
-                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
-                        <Users className='h-4 w-4 mr-1' />
-                        <span>1-3 people</span>
-                      </div>
-                      <div className='flex flex-wrap gap-2 mb-3'>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Wifi className='h-3 w-3 mr-1' /> WiFi
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Printer className='h-3 w-3 mr-1' /> Printer
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Coffee className='h-3 w-3 mr-1' /> Coffee
-                        </span>
-                      </div>
-                      <div className='flex justify-between items-center'>
-                        <div className='text-primary font-semibold'>
-                          20DT/ hour
+                  {roomsData.map((room) => (
+                    <div
+                      key={room._id}
+                      className='bg-white rounded-lg border shadow-sm overflow-hidden'
+                    >
+                      <div className='relative h-48'>
+                        <Image
+                          src={room.images[0]}
+                          alt={room.name}
+                          fill
+                          className='object-cover'
+                        />
+                        <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
+                          {room.type}
                         </div>
-                        <Button
-                          asChild
-                          size='sm'
-                        >
-                          <Link href='/rooms/1/reserve'>Book Now</Link>
-                        </Button>
                       </div>
-                    </div>
-                  </div>
-
-                  {/* Room Card 2 */}
-                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
-                    <div className='relative h-48'>
-                      <Image
-                        src='/Assets/conference-room.jpg'
-                        alt='Meeting Room'
-                        fill
-                        className='object-cover'
-                      />
-                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
-                        Meeting Room
-                      </div>
-                    </div>
-                    <div className='p-4'>
-                      <h3 className='font-semibold text-lg mb-1'>
-                        Conference Room
-                      </h3>
-                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
-                        <Users className='h-4 w-4 mr-1' />
-                        <span>6-10 people</span>
-                      </div>
-                      <div className='flex flex-wrap gap-2 mb-3'>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Wifi className='h-3 w-3 mr-1' /> WiFi
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Cpu className='h-3 w-3 mr-1' /> AV Equipment
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Calendar className='h-3 w-3 mr-1' /> Whiteboard
-                        </span>
-                      </div>
-                      <div className='flex justify-between items-center'>
-                        <div className='text-primary font-semibold'>
-                          35DT / hour
+                      <div className='p-4'>
+                        <h3 className='font-semibold text-lg mb-1'>
+                          {room.name}
+                        </h3>
+                        <div className='flex items-center text-sm text-neutral-grey mb-3'>
+                          <Users className='h-4 w-4 mr-1' />
+                          <span>{formatCapacity(room.capacity)}</span>
                         </div>
-                        <Button
-                          asChild
-                          size='sm'
-                        >
-                          <Link href='/rooms/2/reserve'>Book Now</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Room Card 3 */}
-                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
-                    <div className='relative h-48'>
-                      <Image
-                        src='/Assets/Event Space.jpg'
-                        alt='Event Space'
-                        fill
-                        className='object-cover'
-                      />
-                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
-                        Event Space
-                      </div>
-                    </div>
-                    <div className='p-4'>
-                      <h3 className='font-semibold text-lg mb-1'>
-                        Event Space
-                      </h3>
-                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
-                        <Users className='h-4 w-4 mr-1' />
-                        <span>Up to 30 people</span>
-                      </div>
-                      <div className='flex flex-wrap gap-2 mb-3'>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Wifi className='h-3 w-3 mr-1' /> WiFi
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Cpu className='h-3 w-3 mr-1' /> AV Equipment
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Coffee className='h-3 w-3 mr-1' /> Catering
-                        </span>
-                      </div>
-                      <div className='flex justify-between items-center'>
-                        <div className='text-primary font-semibold'>
-                          50DT / hour
+                        <div className='flex flex-wrap gap-2 mb-3'>
+                          {room.amenities.map((amenity) => (
+                            <span
+                              key={amenity}
+                              className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'
+                            >
+                              {amenityIcons[amenity]} {amenity}
+                            </span>
+                          ))}
                         </div>
-                        <Button
-                          asChild
-                          size='sm'
-                        >
-                          <Link href='/rooms/3/reserve'>Book Now</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Room Card 4 */}
-                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
-                    <div className='relative h-48'>
-                      <Image
-                        src='/Assets/flex-desk.png'
-                        alt='Flex Desk'
-                        fill
-                        className='object-cover'
-                      />
-                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
-                        Flex Desk
-                      </div>
-                    </div>
-                    <div className='p-4'>
-                      <h3 className='font-semibold text-lg mb-1'>Flex Desk</h3>
-                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
-                        <Users className='h-4 w-4 mr-1' />
-                        <span>1 person</span>
-                      </div>
-                      <div className='flex flex-wrap gap-2 mb-3'>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Wifi className='h-3 w-3 mr-1' /> WiFi
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Printer className='h-3 w-3 mr-1' /> Printer
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Coffee className='h-3 w-3 mr-1' /> Coffee
-                        </span>
-                      </div>
-                      <div className='flex justify-between items-center'>
-                        <div className='text-primary font-semibold'>
-                          5DT / hour
+                        <div className='flex justify-between items-center'>
+                          <div className='text-primary font-semibold'>
+                            {room.pricePerHour}DT / hour
+                          </div>
+                          <Button
+                            asChild
+                            size='sm'
+                          >
+                            <Link href={`/rooms/${room._id}/reserve`}>
+                              Book Now
+                            </Link>
+                          </Button>
                         </div>
-                        <Button
-                          asChild
-                          size='sm'
-                        >
-                          <Link href='/rooms/4/reserve'>Book Now</Link>
-                        </Button>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Room Card 5 */}
-                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
-                    <div className='relative h-48'>
-                      <Image
-                        src='/Assets/team-office.jpg'
-                        alt='Team Office'
-                        fill
-                        className='object-cover'
-                      />
-                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
-                        team-office
-                      </div>
-                    </div>
-                    <div className='p-4'>
-                      <h3 className='font-semibold text-lg mb-1'>
-                        Team Office
-                      </h3>
-                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
-                        <Users className='h-4 w-4 mr-1' />
-                        <span>4-8 people</span>
-                      </div>
-                      <div className='flex flex-wrap gap-2 mb-3'>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Wifi className='h-3 w-3 mr-1' /> WiFi
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Printer className='h-3 w-3 mr-1' /> Printer
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Coffee className='h-3 w-3 mr-1' /> Coffee
-                        </span>
-                      </div>
-                      <div className='flex justify-between items-center'>
-                        <div className='text-primary font-semibold'>
-                          10TD / hour
-                        </div>
-                        <Button
-                          asChild
-                          size='sm'
-                        >
-                          <Link href='/rooms/5/reserve'>Book Now</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Room Card 6 */}
-                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
-                    <div className='relative h-48'>
-                      <Image
-                        src='/Assets/meeting-prod.jpg'
-                        alt='Meeting Prod'
-                        fill
-                        className='object-cover'
-                      />
-                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
-                        meeting-prod
-                      </div>
-                    </div>
-                    <div className='p-4'>
-                      <h3 className='font-semibold text-lg mb-1'>
-                        Meeting Pod
-                      </h3>
-                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
-                        <Users className='h-4 w-4 mr-1' />
-                        <span>2-4 people</span>
-                      </div>
-                      <div className='flex flex-wrap gap-2 mb-3'>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Wifi className='h-3 w-3 mr-1' /> WiFi
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Calendar className='h-3 w-3 mr-1' /> Whiteboard
-                        </span>
-                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
-                          <Coffee className='h-3 w-3 mr-1' /> Coffee
-                        </span>
-                      </div>
-                      <div className='flex justify-between items-center'>
-                        <div className='text-primary font-semibold'>
-                          40DT / hour
-                        </div>
-                        <Button
-                          asChild
-                          size='sm'
-                        >
-                          <Link href='/rooms/6/reserve'>Book Now</Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
 
                 {/* Pagination */}

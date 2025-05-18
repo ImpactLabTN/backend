@@ -49,6 +49,21 @@ export async function getRoomById(id: string): Promise<RoomWithId | null> {
   }
 }
 
+export async function getRoomByName(name: string): Promise<RoomWithId | null> {
+  const roomsCollection = await getRoomsCollection();
+  const room = await roomsCollection.findOne({ name });
+
+  if (!room) return null;
+
+  return {
+    ...room,
+    id: room._id!.toString(),
+    _id: undefined,
+  };
+}
+
+
+
 export async function createRoom(roomData: Omit<Room, "_id" | "createdAt" | "updatedAt">): Promise<RoomWithId> {
   const roomsCollection = await getRoomsCollection()
 
