@@ -10,362 +10,453 @@ import Image from "next/image"
 
 export default function RoomsPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className='flex min-h-screen flex-col'>
       <Navbar />
-      <main className="flex-1">
+      <main className='flex-1'>
         {/* Header */}
-        <section className="bg-primary py-12">
-          <div className="container mx-auto px-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Spaces</h1>
-            <p className="text-white/90 max-w-2xl">
-              Find the perfect workspace for your needs, from private offices to meeting rooms and event spaces.
+        <section className='bg-primary py-12'>
+          <div className='container mx-auto px-4'>
+            <h1 className='text-3xl md:text-4xl font-bold text-white mb-4'>
+              Our Spaces
+            </h1>
+            <p className='text-white/90 max-w-2xl'>
+              Find the perfect workspace for your needs, from private offices to
+              meeting rooms and event spaces.
             </p>
           </div>
         </section>
 
         {/* Filters and Rooms */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-4 gap-8">
+        <section className='py-12'>
+          <div className='container mx-auto px-4'>
+            <div className='grid md:grid-cols-4 gap-8'>
               {/* Filters Sidebar */}
-              <div className="md:col-span-1 space-y-6">
-                <div className="bg-white p-6 rounded-lg border shadow-sm">
-                  <h2 className="text-lg font-semibold mb-4 flex items-center">
-                    <Filter className="h-5 w-5 mr-2" />
+              <div className='md:col-span-1 space-y-6'>
+                <div className='bg-white p-6 rounded-lg border shadow-sm'>
+                  <h2 className='text-lg font-semibold mb-4 flex items-center'>
+                    <Filter className='h-5 w-5 mr-2' />
                     Filters
                   </h2>
 
-                  <div className="space-y-5">
+                  <div className='space-y-5'>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Search</label>
-                      <Input placeholder="Search spaces..." />
+                      <label className='block text-sm font-medium mb-2'>
+                        Search
+                      </label>
+                      <Input placeholder='Search spaces...' />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-2">Space Type</label>
-                      <Select defaultValue="all">
+                      <label className='block text-sm font-medium mb-2'>
+                        Space Type
+                      </label>
+                      <Select defaultValue='all'>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select type" />
+                          <SelectValue placeholder='Select type' />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="all">All Spaces</SelectItem>
-                          <SelectItem value="private">Private Office</SelectItem>
-                          <SelectItem value="meeting">Meeting Room</SelectItem>
-                          <SelectItem value="event">Event Space</SelectItem>
-                          <SelectItem value="desk">Hot Desk</SelectItem>
+                          <SelectItem value='all'>All Spaces</SelectItem>
+                          <SelectItem value='private'>
+                            Private Office
+                          </SelectItem>
+                          <SelectItem value='meeting'>Meeting Room</SelectItem>
+                          <SelectItem value='event'>Event Space</SelectItem>
+                          <SelectItem value='desk'>Hot Desk</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-2">Capacity</label>
-                      <Select defaultValue="any">
+                      <label className='block text-sm font-medium mb-2'>
+                        Capacity
+                      </label>
+                      <Select defaultValue='any'>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select capacity" />
+                          <SelectValue placeholder='Select capacity' />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="any">Any</SelectItem>
-                          <SelectItem value="1-2">1-2 people</SelectItem>
-                          <SelectItem value="3-5">3-5 people</SelectItem>
-                          <SelectItem value="6-10">6-10 people</SelectItem>
-                          <SelectItem value="10+">10+ people</SelectItem>
+                          <SelectItem value='any'>Any</SelectItem>
+                          <SelectItem value='1-2'>1-2 people</SelectItem>
+                          <SelectItem value='3-5'>3-5 people</SelectItem>
+                          <SelectItem value='6-10'>6-10 people</SelectItem>
+                          <SelectItem value='10+'>10+ people</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-2">Price Range (per hour)</label>
-                      <div className="pt-4 px-2">
-                        <Slider defaultValue={[50]} max={200} step={10} />
+                      <label className='block text-sm font-medium mb-2'>
+                        Price Range (per hour)
+                      </label>
+                      <div className='pt-4 px-2'>
+                        <Slider
+                          defaultValue={[50]}
+                          max={200}
+                          step={10}
+                        />
                       </div>
-                      <div className="flex justify-between mt-2 text-sm text-neutral-grey">
+                      <div className='flex justify-between mt-2 text-sm text-neutral-grey'>
                         <span>$0</span>
                         <span>$200</span>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-2">Amenities</label>
-                      <div className="space-y-2">
-                        <div className="flex items-center">
-                          <input type="checkbox" id="wifi" className="mr-2" />
-                          <label htmlFor="wifi" className="text-sm">
+                      <label className='block text-sm font-medium mb-2'>
+                        Amenities
+                      </label>
+                      <div className='space-y-2'>
+                        <div className='flex items-center'>
+                          <input
+                            type='checkbox'
+                            id='wifi'
+                            className='mr-2'
+                          />
+                          <label
+                            htmlFor='wifi'
+                            className='text-sm'
+                          >
                             WiFi
                           </label>
                         </div>
-                        <div className="flex items-center">
-                          <input type="checkbox" id="projector" className="mr-2" />
-                          <label htmlFor="projector" className="text-sm">
+                        <div className='flex items-center'>
+                          <input
+                            type='checkbox'
+                            id='projector'
+                            className='mr-2'
+                          />
+                          <label
+                            htmlFor='projector'
+                            className='text-sm'
+                          >
                             Projector
                           </label>
                         </div>
-                        <div className="flex items-center">
-                          <input type="checkbox" id="whiteboard" className="mr-2" />
-                          <label htmlFor="whiteboard" className="text-sm">
+                        <div className='flex items-center'>
+                          <input
+                            type='checkbox'
+                            id='whiteboard'
+                            className='mr-2'
+                          />
+                          <label
+                            htmlFor='whiteboard'
+                            className='text-sm'
+                          >
                             Whiteboard
                           </label>
                         </div>
-                        <div className="flex items-center">
-                          <input type="checkbox" id="coffee" className="mr-2" />
-                          <label htmlFor="coffee" className="text-sm">
+                        <div className='flex items-center'>
+                          <input
+                            type='checkbox'
+                            id='coffee'
+                            className='mr-2'
+                          />
+                          <label
+                            htmlFor='coffee'
+                            className='text-sm'
+                          >
                             Coffee Machine
                           </label>
                         </div>
                       </div>
                     </div>
 
-                    <Button className="w-full">Apply Filters</Button>
+                    <Button className='w-full'>Apply Filters</Button>
                   </div>
                 </div>
               </div>
 
               {/* Rooms Grid */}
-              <div className="md:col-span-3">
-                <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-xl font-semibold">12 Spaces Available</h2>
-                  <Select defaultValue="recommended">
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Sort by" />
+              <div className='md:col-span-3'>
+                <div className='flex justify-between items-center mb-6'>
+                  <h2 className='text-xl font-semibold'>12 Spaces Available</h2>
+                  <Select defaultValue='recommended'>
+                    <SelectTrigger className='w-[180px]'>
+                      <SelectValue placeholder='Sort by' />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="recommended">Recommended</SelectItem>
-                      <SelectItem value="price-low">Price: Low to High</SelectItem>
-                      <SelectItem value="price-high">Price: High to Low</SelectItem>
-                      <SelectItem value="capacity">Capacity</SelectItem>
+                      <SelectItem value='recommended'>Recommended</SelectItem>
+                      <SelectItem value='price-low'>
+                        Price: Low to High
+                      </SelectItem>
+                      <SelectItem value='price-high'>
+                        Price: High to Low
+                      </SelectItem>
+                      <SelectItem value='capacity'>Capacity</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
                   {/* Room Card 1 */}
-                  <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
-                    <div className="relative h-48">
-                     <Image
-                        src="/Assets/OpenSpace.jpg"
-                        alt="OpenSpace"
+                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
+                    <div className='relative h-48'>
+                      <Image
+                        src='/Assets/OpenSpace.jpg'
+                        alt='OpenSpace'
                         fill
-                        className="object-cover"
+                        className='object-cover'
                       />
-                      <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                      OpenSpace
+                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
+                        OpenSpace
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-1">Executive Office</h3>
-                      <div className="flex items-center text-sm text-neutral-grey mb-3">
-                        <Users className="h-4 w-4 mr-1" />
+                    <div className='p-4'>
+                      <h3 className='font-semibold text-lg mb-1'>
+                        Executive Office
+                      </h3>
+                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
+                        <Users className='h-4 w-4 mr-1' />
                         <span>1-3 people</span>
                       </div>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Wifi className="h-3 w-3 mr-1" /> WiFi
+                      <div className='flex flex-wrap gap-2 mb-3'>
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Wifi className='h-3 w-3 mr-1' /> WiFi
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Printer className="h-3 w-3 mr-1" /> Printer
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Printer className='h-3 w-3 mr-1' /> Printer
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Coffee className="h-3 w-3 mr-1" /> Coffee
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Coffee className='h-3 w-3 mr-1' /> Coffee
                         </span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">20DT/ hour</div>
-                        <Button asChild size="sm">
-                          <Link href="/rooms/1/reserve">Book Now</Link>
+                      <div className='flex justify-between items-center'>
+                        <div className='text-primary font-semibold'>
+                          20DT/ hour
+                        </div>
+                        <Button
+                          asChild
+                          size='sm'
+                        >
+                          <Link href='/rooms/1/reserve'>Book Now</Link>
                         </Button>
                       </div>
                     </div>
                   </div>
 
                   {/* Room Card 2 */}
-                  <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
-                    <div className="relative h-48">
-                     <Image
-                        src="/Assets/conference-room.jpg"
-                        alt="Meeting Room"
+                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
+                    <div className='relative h-48'>
+                      <Image
+                        src='/Assets/conference-room.jpg'
+                        alt='Meeting Room'
                         fill
-                        className="object-cover"
+                        className='object-cover'
                       />
-                      <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
+                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
                         Meeting Room
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-1">Conference Room</h3>
-                      <div className="flex items-center text-sm text-neutral-grey mb-3">
-                        <Users className="h-4 w-4 mr-1" />
+                    <div className='p-4'>
+                      <h3 className='font-semibold text-lg mb-1'>
+                        Conference Room
+                      </h3>
+                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
+                        <Users className='h-4 w-4 mr-1' />
                         <span>6-10 people</span>
                       </div>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Wifi className="h-3 w-3 mr-1" /> WiFi
+                      <div className='flex flex-wrap gap-2 mb-3'>
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Wifi className='h-3 w-3 mr-1' /> WiFi
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Cpu className="h-3 w-3 mr-1" /> AV Equipment
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Cpu className='h-3 w-3 mr-1' /> AV Equipment
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Calendar className="h-3 w-3 mr-1" /> Whiteboard
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Calendar className='h-3 w-3 mr-1' /> Whiteboard
                         </span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">35DT / hour</div>
-                        <Button asChild size="sm">
-                          <Link href="/rooms/2/reserve">Book Now</Link>
+                      <div className='flex justify-between items-center'>
+                        <div className='text-primary font-semibold'>
+                          35DT / hour
+                        </div>
+                        <Button
+                          asChild
+                          size='sm'
+                        >
+                          <Link href='/rooms/2/reserve'>Book Now</Link>
                         </Button>
                       </div>
                     </div>
                   </div>
 
                   {/* Room Card 3 */}
-                  <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
-                    <div className="relative h-48">
+                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
+                    <div className='relative h-48'>
                       <Image
-                        src="/Assets/Event Space.jpg"
-                        alt="Event Space"
+                        src='/Assets/Event Space.jpg'
+                        alt='Event Space'
                         fill
-                        className="object-cover"
+                        className='object-cover'
                       />
-                      <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                      Event Space
+                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
+                        Event Space
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-1">Event Space</h3>
-                      <div className="flex items-center text-sm text-neutral-grey mb-3">
-                        <Users className="h-4 w-4 mr-1" />
+                    <div className='p-4'>
+                      <h3 className='font-semibold text-lg mb-1'>
+                        Event Space
+                      </h3>
+                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
+                        <Users className='h-4 w-4 mr-1' />
                         <span>Up to 30 people</span>
                       </div>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Wifi className="h-3 w-3 mr-1" /> WiFi
+                      <div className='flex flex-wrap gap-2 mb-3'>
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Wifi className='h-3 w-3 mr-1' /> WiFi
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Cpu className="h-3 w-3 mr-1" /> AV Equipment
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Cpu className='h-3 w-3 mr-1' /> AV Equipment
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Coffee className="h-3 w-3 mr-1" /> Catering
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Coffee className='h-3 w-3 mr-1' /> Catering
                         </span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">50DT / hour</div>
-                        <Button asChild size="sm">
-                          <Link href="/rooms/3/reserve">Book Now</Link>
+                      <div className='flex justify-between items-center'>
+                        <div className='text-primary font-semibold'>
+                          50DT / hour
+                        </div>
+                        <Button
+                          asChild
+                          size='sm'
+                        >
+                          <Link href='/rooms/3/reserve'>Book Now</Link>
                         </Button>
                       </div>
                     </div>
                   </div>
 
                   {/* Room Card 4 */}
-                  <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
-                    <div className="relative h-48">
-                     <Image
-                        src="/Assets/flex-desk.png"
-                        alt="Flex Desk"
+                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
+                    <div className='relative h-48'>
+                      <Image
+                        src='/Assets/flex-desk.png'
+                        alt='Flex Desk'
                         fill
-                        className="object-cover"
+                        className='object-cover'
                       />
-                      <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                      Flex Desk
+                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
+                        Flex Desk
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-1">Flex Desk</h3>
-                      <div className="flex items-center text-sm text-neutral-grey mb-3">
-                        <Users className="h-4 w-4 mr-1" />
+                    <div className='p-4'>
+                      <h3 className='font-semibold text-lg mb-1'>Flex Desk</h3>
+                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
+                        <Users className='h-4 w-4 mr-1' />
                         <span>1 person</span>
                       </div>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Wifi className="h-3 w-3 mr-1" /> WiFi
+                      <div className='flex flex-wrap gap-2 mb-3'>
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Wifi className='h-3 w-3 mr-1' /> WiFi
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Printer className="h-3 w-3 mr-1" /> Printer
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Printer className='h-3 w-3 mr-1' /> Printer
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Coffee className="h-3 w-3 mr-1" /> Coffee
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Coffee className='h-3 w-3 mr-1' /> Coffee
                         </span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">5DT / hour</div>
-                        <Button asChild size="sm">
-                          <Link href="/rooms/4/reserve">Book Now</Link>
+                      <div className='flex justify-between items-center'>
+                        <div className='text-primary font-semibold'>
+                          5DT / hour
+                        </div>
+                        <Button
+                          asChild
+                          size='sm'
+                        >
+                          <Link href='/rooms/4/reserve'>Book Now</Link>
                         </Button>
                       </div>
                     </div>
                   </div>
 
                   {/* Room Card 5 */}
-                  <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
-                    <div className="relative h-48">
+                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
+                    <div className='relative h-48'>
                       <Image
-                        src="/Assets/team-office.jpg"
-                        alt="Team Office"
+                        src='/Assets/team-office.jpg'
+                        alt='Team Office'
                         fill
-                        className="object-cover"
+                        className='object-cover'
                       />
-                      <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                      team-office
+                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
+                        team-office
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-1">Team Office</h3>
-                      <div className="flex items-center text-sm text-neutral-grey mb-3">
-                        <Users className="h-4 w-4 mr-1" />
+                    <div className='p-4'>
+                      <h3 className='font-semibold text-lg mb-1'>
+                        Team Office
+                      </h3>
+                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
+                        <Users className='h-4 w-4 mr-1' />
                         <span>4-8 people</span>
                       </div>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Wifi className="h-3 w-3 mr-1" /> WiFi
+                      <div className='flex flex-wrap gap-2 mb-3'>
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Wifi className='h-3 w-3 mr-1' /> WiFi
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Printer className="h-3 w-3 mr-1" /> Printer
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Printer className='h-3 w-3 mr-1' /> Printer
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Coffee className="h-3 w-3 mr-1" /> Coffee
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Coffee className='h-3 w-3 mr-1' /> Coffee
                         </span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">10TD / hour</div>
-                        <Button asChild size="sm">
-                          <Link href="/rooms/5/reserve">Book Now</Link>
+                      <div className='flex justify-between items-center'>
+                        <div className='text-primary font-semibold'>
+                          10TD / hour
+                        </div>
+                        <Button
+                          asChild
+                          size='sm'
+                        >
+                          <Link href='/rooms/5/reserve'>Book Now</Link>
                         </Button>
                       </div>
                     </div>
                   </div>
 
                   {/* Room Card 6 */}
-                  <div className="bg-white rounded-lg border shadow-sm overflow-hidden">
-                    <div className="relative h-48">
-                       <Image
-                        src="/Assets/meeting-prod.jpg"
-                        alt="Meeting Prod"
+                  <div className='bg-white rounded-lg border shadow-sm overflow-hidden'>
+                    <div className='relative h-48'>
+                      <Image
+                        src='/Assets/meeting-prod.jpg'
+                        alt='Meeting Prod'
                         fill
-                        className="object-cover"
+                        className='object-cover'
                       />
-                      <div className="absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium">
-                      meeting-prod
+                      <div className='absolute top-2 right-2 bg-secondary text-neutral-black px-2 py-1 rounded text-sm font-medium'>
+                        meeting-prod
                       </div>
                     </div>
-                    <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-1">Meeting Pod</h3>
-                      <div className="flex items-center text-sm text-neutral-grey mb-3">
-                        <Users className="h-4 w-4 mr-1" />
+                    <div className='p-4'>
+                      <h3 className='font-semibold text-lg mb-1'>
+                        Meeting Pod
+                      </h3>
+                      <div className='flex items-center text-sm text-neutral-grey mb-3'>
+                        <Users className='h-4 w-4 mr-1' />
                         <span>2-4 people</span>
                       </div>
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Wifi className="h-3 w-3 mr-1" /> WiFi
+                      <div className='flex flex-wrap gap-2 mb-3'>
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Wifi className='h-3 w-3 mr-1' /> WiFi
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Calendar className="h-3 w-3 mr-1" /> Whiteboard
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Calendar className='h-3 w-3 mr-1' /> Whiteboard
                         </span>
-                        <span className="bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center">
-                          <Coffee className="h-3 w-3 mr-1" /> Coffee
+                        <span className='bg-neutral-silver px-2 py-1 rounded-full text-xs flex items-center'>
+                          <Coffee className='h-3 w-3 mr-1' /> Coffee
                         </span>
                       </div>
-                      <div className="flex justify-between items-center">
-                        <div className="text-primary font-semibold">40DT / hour</div>
-                        <Button asChild size="sm">
-                          <Link href="/rooms/6/reserve">Book Now</Link>
+                      <div className='flex justify-between items-center'>
+                        <div className='text-primary font-semibold'>
+                          40DT / hour
+                        </div>
+                        <Button
+                          asChild
+                          size='sm'
+                        >
+                          <Link href='/rooms/6/reserve'>Book Now</Link>
                         </Button>
                       </div>
                     </div>
@@ -373,49 +464,66 @@ export default function RoomsPage() {
                 </div>
 
                 {/* Pagination */}
-                <div className="flex justify-center mt-8">
-                  <nav className="flex items-center gap-1">
-                    <Button variant="outline" size="icon" disabled>
-                      <span className="sr-only">Previous page</span>
+                <div className='flex justify-center mt-8'>
+                  <nav className='flex items-center gap-1'>
+                    <Button
+                      variant='outline'
+                      size='icon'
+                      disabled
+                    >
+                      <span className='sr-only'>Previous page</span>
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-4 w-4"
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='24'
+                        height='24'
+                        viewBox='0 0 24 24'
+                        fill='none'
+                        stroke='currentColor'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        className='h-4 w-4'
                       >
-                        <path d="m15 18-6-6 6-6" />
+                        <path d='m15 18-6-6 6-6' />
                       </svg>
                     </Button>
-                    <Button variant="outline" size="sm" className="bg-primary text-white">
+                    <Button
+                      variant='outline'
+                      size='sm'
+                      className='bg-primary text-white'
+                    >
                       1
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button
+                      variant='outline'
+                      size='sm'
+                    >
                       2
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button
+                      variant='outline'
+                      size='sm'
+                    >
                       3
                     </Button>
-                    <Button variant="outline" size="icon">
-                      <span className="sr-only">Next page</span>
+                    <Button
+                      variant='outline'
+                      size='icon'
+                    >
+                      <span className='sr-only'>Next page</span>
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-4 w-4"
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='24'
+                        height='24'
+                        viewBox='0 0 24 24'
+                        fill='none'
+                        stroke='currentColor'
+                        strokeWidth='2'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        className='h-4 w-4'
                       >
-                        <path d="m9 18 6-6-6-6" />
+                        <path d='m9 18 6-6-6-6' />
                       </svg>
                     </Button>
                   </nav>
@@ -427,5 +535,5 @@ export default function RoomsPage() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
