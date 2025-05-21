@@ -7,12 +7,19 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getCurrentUser } from '@/lib/actions/auth-actions';
+import logo from '/public/Assets/logo.png';
+import Image from 'next/image';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const [user, setUser] = useState(null);
+  type User = {
+    role?: string;
+    [key: string]: any;
+  };
+
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const getUser = async () => {
@@ -43,7 +50,10 @@ export function Navbar() {
             href='/'
             className='flex items-center'
           >
+            
             <span className='text-2xl font-bold text-primary'>ImpactLab</span>
+
+        <Image src={logo} alt="ImpactLab Logo" width={50} style={{ height: 'auto' }} />
           </Link>
         </div>
 

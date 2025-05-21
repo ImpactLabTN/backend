@@ -92,7 +92,7 @@ export default function AdminDashboard() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-neutral-grey">Revenue</p>
-                    <h3 className="text-2xl font-bold mt-1">$12,450</h3>
+                    <h3 className="text-2xl font-bold mt-1">DT12,450</h3>
                     <p className="text-xs text-green-600 mt-1">+15% from last month</p>
                   </div>
                   <div className="bg-primary/10 p-3 rounded-full">

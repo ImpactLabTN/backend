@@ -249,8 +249,8 @@ export default function RoomsPage() {
                         />
                       </div>
                       <div className='flex justify-between mt-2 text-sm text-neutral-grey'>
-                        <span>$0</span>
-                        <span>${priceRange[0]}</span>
+                        <span>0DT</span>
+                        <span>DT{priceRange[0]}</span>
                       </div>
                     </div>
 

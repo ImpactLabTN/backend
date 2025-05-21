@@ -66,7 +66,7 @@
   },
   {
     "_id": "6",
-    "name": "Meeting Pod",
+    "name": "Meeting Prod",
     "description": "A compact space for small group meetings.",
     "type": "meeting-prod",
     "capacity": 4,
