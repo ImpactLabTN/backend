@@ -107,7 +107,7 @@ export default function ReservePage({ params }: { params: { id: string } }) {
     }
   }
 
-  // Calculate total price
+  
   const calculateTotalPrice = () => {
     if (!room || !startTime || !endTime) return 0
 
@@ -237,22 +237,30 @@ export default function ReservePage({ params }: { params: { id: string } }) {
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label>Start Time</Label>
-                        <Select value={startTime} onValueChange={setStartTime}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select start time" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="09:00">9:00 AM</SelectItem>
-                            <SelectItem value="10:00">10:00 AM</SelectItem>
-                            <SelectItem value="11:00">11:00 AM</SelectItem>
-                            <SelectItem value="12:00">12:00 PM</SelectItem>
-                            <SelectItem value="13:00">1:00 PM</SelectItem>
-                            <SelectItem value="14:00">2:00 PM</SelectItem>
-                            <SelectItem value="15:00">3:00 PM</SelectItem>
-                            <SelectItem value="16:00">4:00 PM</SelectItem>
-                            <SelectItem value="17:00">5:00 PM</SelectItem>
-                          </SelectContent>
-                        </Select>
+                    <Select value={startTime} onValueChange={setStartTime}>
+  <SelectTrigger>
+    <SelectValue placeholder="Select start time" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="09:00">9:00 AM</SelectItem>
+    <SelectItem value="10:00">10:00 AM</SelectItem>
+
+    <SelectItem value="11:00" disabled title="Already reserved">
+      11:00 AM
+    </SelectItem>
+    <SelectItem value="12:00">
+      12:00 PM
+    </SelectItem>
+    <SelectItem value="13:00" disabled title="Already reserved">
+      1:00 PM
+    </SelectItem>
+
+    <SelectItem value="14:00">2:00 PM</SelectItem>
+    <SelectItem value="15:00">3:00 PM</SelectItem>
+    <SelectItem value="16:00"  disabled title="Already reserved">4:00 PM</SelectItem>
+    <SelectItem value="17:00"  disabled title="Already reserved">5:00 PM</SelectItem>
+  </SelectContent>
+</Select>
                       </div>
 
                       <div className="space-y-2">
